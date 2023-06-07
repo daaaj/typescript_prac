@@ -9,3 +9,55 @@
 <a class="naver" href="naver.com">링크</a>
 <a class="naver" href="naver.com">링크</a>
 <a class="naver" href="naver.com">링크</a>
+
+<!-- class 문법 정리 -->
+<script>
+    // 함수와 똑같지만 this가 존재하기 때문에 class다 (constructor)
+    function 기계(a, b) {
+        // this : 기계로부터 생성되는 object (= 인스턴스)
+        (this.q = a), (this.w = b);
+    }
+
+    var nunu = new 기계('consume', 'snowball');
+    /*
+    위와 같은거다
+    var nunu = {
+        q : 'consume',
+        w : 'snowball'
+    }
+    */
+    var garen = new 기계('strike', 'courage');
+
+    // protorype = 기본 내장 되어있는 속성
+    기계.prototype.name = 'kim';
+    // 부모가 가지고 있는 거여서 nunu.name 하면 kim 이 출력됨
+
+    /*
+    object에서 자료 뽑을 때 일어나는 일
+    부모 유전자에 있는걸 자식이 사용가능한 이유?
+    nunu.name
+    : nunu가 name을 가지고 있지 않으면?
+    -> nunu 부모유전자 뒤져본다
+    -> 부모에게 name이 있으면 출력 됨
+
+    1. 직접 자료를 가지고 있으면 그거 출력
+    2. 없으면 부모 유전자 뒤져봄
+    3. 없으면 부모의 부모 유전자 뒤져봄
+    ... 계속 부모로 타고 올라감
+    => prototype chaining
+    */
+
+    var arr = [4, 2, 1];
+    arr.sort();
+
+    // 내가 모든 array에서 자주사용하는 함수를 저장해놓고 쓰고싶다
+    Array.prototype.함수 = function () {};
+
+    // ES6 class 문법
+    class Hero {
+        constructor() {
+            (this.q = a), (this.w = b);
+        }
+    }
+    new Hero();
+</script>
